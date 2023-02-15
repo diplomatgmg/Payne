@@ -38,6 +38,7 @@ INSTALLED_APPS = [
 
     'debug_toolbar',
     'django_cleanup.apps.CleanupConfig',
+    'django_extensions',
 
     'apps.index',
     ]
