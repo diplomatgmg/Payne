@@ -2645,7 +2645,7 @@ a, button, .item-overlay, .global-overlay, .scroll-to-top i:before, .slick-dots 
       top: 100%;
       width: 100%;
       left: 0;
-      height: 80px; } }
+      height: 100%; } }
 
 @media (min-width: 75em) {
   .main-navigation .mainmenu__link {
@@ -4310,6 +4310,9 @@ a, button, .item-overlay, .global-overlay, .scroll-to-top i:before, .slick-dots 
 
 .pt--20 {
   padding-top: 20px; }
+
+.pt--38 {
+  padding-top: 38px; }
 
 .pt--50 {
   padding-top: 50px; }
