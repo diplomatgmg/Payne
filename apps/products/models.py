@@ -5,6 +5,8 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
+from apps.products.validators import validate_discount
+
 
 def get_random_rating():
     r_num = random.randint(0, 10)
@@ -18,16 +20,6 @@ def get_random_rating():
         return round(random.uniform(4, 4.7), 1)
     if 7 <= r_num <= 10:
         return round(random.uniform(4.5, 5), 1)
-
-
-def validate_discount(discount):
-    if discount > 90:
-        raise ValidationError(
-                _('%(discount)s не может быть больше 90%'),
-                params={
-                    'discount': discount
-                    },
-                )
 
 
 class ProductCategory(models.Model):
