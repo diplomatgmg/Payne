@@ -1,0 +1,57 @@
+{% load products_extras %}
+{% load thumbnail %}
+{% load humanize %}
+
+<div class="col-lg-3 col-md-4 col-sm-6 mb--65 mb-md--50">
+	<div class="payne-product">
+		<div class="product__inner">
+			<div class="product__image">
+				<figure class="product__image--holder">
+					{% thumbnail product.image '270x300' crop='center' as im %}
+						<img src="{{ im.url }}" alt="Product">
+					{% endthumbnail %}
+				</figure>
+				<a href="product-details.html" class="product-overlay"></a>
+				<div class="product__action">
+					<a href="wishlist.html" class="action-btn">
+						<i class="fa fa-balance-scale"></i>
+						<span class="sr-only">Add To Compare</span>
+					</a>
+					<a href="wishlist.html" class="action-btn">
+						<i class="fa fa-heart-o"></i>
+						<span class="sr-only">Add to wishlist</span>
+					</a>
+					<a href="cart.html" class="action-btn">
+						<i class="fa fa-shopping-cart"></i>
+						<span class="sr-only">Add To Cart</span>
+					</a>
+				</div>
+			</div>
+			<div class="product__info">
+				<div class="product__info--left">
+					<h3 class="product__title">
+						<a href="product-details.html">{{ product.name }}</a>
+					</h3>
+					<div class="product__price">
+						{% if product.discount %}
+							<s>{{ product.real_price|intcomma }}</s>
+							<span class="money">{{ product.price|intcomma }}</span>
+							<span class="sign">₽</span>
+						{% else %}
+							<span class="money">{{ product.price|intcomma }}</span>
+							<span class="sign">₽</span>
+						{% endif %}
+					</div>
+				</div>
+				<div class="product__info--right">
+              <span class="product__rating">
+                  {{ product.rating }}
+                 <i class="fa fa-star"
+                    style="color: {{ product.rating|get_color_rating }};
+		                    text-shadow: 0 0 1px black;"></i>
+              </span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
