@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+	<div class="main-content-wrapper">
+		<div class="page-content-inner pt--250 pb--220">
+			<div class="container">
+				<div class="row" style="place-content: center">
+					<div class="col-md-6 mb-sm--50">
+						<div class="login-box">
+							<h3 class="heading__tertiary mb--30">Вход</h3>
+							{% if messages %}
+								{% for message in messages %}
+									<strong style="color: red">{{ message }}</strong><br><br>
+								{% endfor %}
+							{% endif %}
+							<form action="{% url 'users:login' %}" method="post">
+								{% csrf_token %}
+								<div class="form__group mb--20">
+									<label class="form__label" for="{{ form.username_or_email.id_for_label }}">Имя
+										пользователя или почта</label>
+									{{ form.username_or_email }}                                </div>
+								<div class="form__group mb--20">
+									<label class="form__label"
+									       for="{{ form.username_or_email.id_for_label }}">Пароль</label>
+									{{ form.password }}
+								</div>
+								<div class="d-flex align-items-center mb--20">
+									<div class="form__group mr--30">
+										<input type="submit" value="Войти" class="btn btn-size-sm">
+									</div>
+									<div class="form__group mr--30">
+										<a class="forgot-pass" href="{% url 'users:register' %}">Нет аккаунта?</a>
+									</div>
+									<div class="form__group mr--30">
+										<a class="forgot-pass" href="#">Забыли пароль?</a>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

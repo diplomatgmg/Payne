@@ -72,9 +72,20 @@
 						</div>
 						<div class="header__col header__right">
 							<div class="toolbar-item d-none d-lg-block">
-								<a href="login-register.html" class="toolbar-btn">
-									<span>Войти</span>
-								</a>
+								{% if user.is_authenticated %}
+									<a href="login-register.html" class="toolbar-btn">
+										<span>Профиль</span>
+									</a>
+									|
+									<a href="{% url 'users:logout' %}" class="toolbar-btn">
+										<span style="font-size: 12px">Выйти</span>
+									</a>
+
+								{% else %}
+									<a href="{% url 'users:login' %}" class="toolbar-btn">
+										<span>Войти</span>
+									</a>
+								{% endif %}
 							</div>
 							<div class="toolbar-item d-block d-lg-none">
 								<a href="#offcanvasnav" class="hamburger-icon js-toolbar menu-btn">
