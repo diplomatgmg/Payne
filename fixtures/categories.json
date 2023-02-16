@@ -1,0 +1,9 @@
+[
+  {
+    "model": "products.productcategory",
+    "pk": 1,
+    "fields": {
+      "category": "Смартфоны"
+    }
+  }
+]

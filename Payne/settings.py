@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_extensions',
 
     'apps.index',
+    'apps.products',
     ]
 
 MIDDLEWARE = [
@@ -127,6 +128,10 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 INTERNAL_IPS = [
     "127.0.0.1",
+    ]
+
+FIXTURE_DIRS = [
+    BASE_DIR / 'fixtures',
     ]
 
 # Default primary key field type
