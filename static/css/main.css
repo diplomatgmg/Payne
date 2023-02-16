@@ -227,7 +227,7 @@ a, a:hover, a:focus, a:active, button, button:focus, input, select, textarea, .s
 01 - Base - Typography
 *****************************/
 .heading__primary {
-  font-size: 8rem; }
+  font-size: 6rem; }
   @media (max-width: 47.94em) {
     .heading__primary {
       font-size: 6rem; } }

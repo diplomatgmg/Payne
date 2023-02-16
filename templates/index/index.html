@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load thumbnail %}
 
 
 {% block content %}
@@ -19,14 +20,21 @@
 									<div class="slider-content py-0">
 										<div class="slider-content__text mb--95 md-lg--80 mb-md--40 mb-sm--15">
 											<h3 class="text-uppercase font-weight-light" data-animation="fadeInUp"
-											    data-duration=".3s" data-delay=".3s">Лучший рейтинг!</h3>
-											<h1 class="heading__primary mb--40 mb-md--20" data-animation="fadeInUp"
-											    data-duration=".3s" data-delay=".3s">Название телефона</h1>
+											    data-duration=".3s" data-delay=".3s">
+												Лучший рейтинг!
+												<small>
+													({{ best_rating_product.rating }}
+													<i class="fa fa-star" style="font-size: 15px"></i>)
+												</small>
+											</h3>
+											<h6 class="heading__primary mb--40 mb-md--20" data-animation="fadeInUp"
+											    data-duration=".3s" data-delay=".3s">
+												{{ best_rating_product.name }}
+											</h6>
 											<p class="font-weight-light" data-animation="fadeInUp"
-											   data-duration=".3s" data-delay=".3s">Описание Описание Описание Описание
-												Описание Описание Описание Описание Описание Описание Описание Описание Описание
-												Описание Описание Описание Описание Описание Описание Описание Описание
-												Описание </p>
+											   data-duration=".3s" data-delay=".3s">
+												{{ best_rating_product.description }}
+											</p>
 										</div>
 										<div class="slider-content__btn">
 											<a href="shop.html" class="btn-link" data-animation="fadeInUp"
@@ -36,7 +44,9 @@
 								</div>
 								<div class="col-lg-5 offset-lg-1 col-md-4">
 									<figure class="slider-image d-none d-md-block">
-										<img src="{% static 'img/slider/slider-image-02.png' %}" alt="Slider Image">
+										{% thumbnail best_rating_product.image '516x563' crop='center' as im %}
+											<img src="{{ im.url }}" alt="Best Rating Product">
+										{% endthumbnail %}
 									</figure>
 								</div>
 							</div>
