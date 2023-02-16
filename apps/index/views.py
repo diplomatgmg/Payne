@@ -11,4 +11,5 @@ class IndexTemplateView(TitleMixin, TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['best_rating_product'] = Product.objects.order_by('-rating').first()
+        context['best_price_products'] = Product.objects.order_by('price', '-rating')[:8]
         return context
