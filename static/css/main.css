@@ -5494,6 +5494,20 @@ a, button, .item-overlay, .global-overlay, .scroll-to-top i:before, .slick-dots 
     width: 150px;
 }
 
+
+.help-text {
+    font-size: 13px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.form-errors {
+    font-size: 13px;
+    margin-left: 10px;
+    margin-top: 5px;
+    color: red;
+}
+
 /*****************************
 42 - Pages - Shop
 *****************************/
