@@ -17,7 +17,7 @@ class UserLoginView(TitleMixin, LoginView):
     title = 'Вход'
     template_name = 'users/login.html'
     form_class = UserLoginForm
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('index:index')
 
     def post(self, request, *args, **kwargs):
         form = self.get_form()
@@ -36,7 +36,7 @@ class UserCreateView(TitleMixin, CreateView):
     model = CustomUser
     template_name = 'users/register.html'
     form_class = UserRegisterForm
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('index:index')
 
     def form_valid(self, form):
         form.save()
@@ -65,7 +65,7 @@ class ChangeUserPassword(LoginRequiredMixin, PasswordChangeView):
     template_name = 'users/change_password.html'
     form_class = UserChangePasswordForm
     title = 'Изменение пароля'
-    login_url = reverse_lazy('login')
+    login_url = reverse_lazy('users:login')
 
     def get_success_url(self):
         return reverse_lazy('profile', kwargs={'pk': self.request.user.id})
