@@ -5,7 +5,7 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
 
-from apps.users.forms import UserLoginForm, UserRegisterForm, UserProfileForm, UserChangePasswordForm
+from apps.users.forms import UserChangePasswordForm, UserLoginForm, UserProfileForm, UserRegisterForm
 from apps.users.models import CustomUser
 from mixins.views import TitleMixin
 
@@ -30,7 +30,6 @@ class UserLoginView(TitleMixin, LoginView):
         return self.form_invalid(form)
 
 
-
 class UserCreateView(TitleMixin, CreateView):
     title = 'Регистрация'
     model = CustomUser
@@ -53,12 +52,13 @@ class ProfileView(TitleMixin, LoginRequiredMixin, UpdateView):
     form_class = UserProfileForm
 
     def get_success_url(self):
-        return reverse_lazy('profile', kwargs={'pk': self.request.user.id})
+        return reverse_lazy('profile', kwargs={
+            'pk': self.request.user.id
+            })
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         return context
-
 
 
 class ChangeUserPassword(LoginRequiredMixin, PasswordChangeView):
@@ -68,4 +68,6 @@ class ChangeUserPassword(LoginRequiredMixin, PasswordChangeView):
     login_url = reverse_lazy('users:login')
 
     def get_success_url(self):
-        return reverse_lazy('profile', kwargs={'pk': self.request.user.id})
+        return reverse_lazy('profile', kwargs={
+            'pk': self.request.user.id
+            })

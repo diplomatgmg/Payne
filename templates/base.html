@@ -73,7 +73,7 @@
 						<div class="header__col header__right">
 							<div class="toolbar-item d-none d-lg-block">
 								{% if user.is_authenticated %}
-									<a href="login-register.html" class="toolbar-btn">
+									<a href="{% url 'users:profile' user.id %}" class="toolbar-btn">
 										<span>{{ user.username }} </span>
 									</a>
 									|
