@@ -1,4 +1,6 @@
-.idea
-cache
+.idea/
+cache/
+venv/
+
 *initial.py
 db.sqlite3
