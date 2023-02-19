@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load static %}
+{% load humanize %}
+{% load shop_extras %}
+
+
+
+{% block content %}
+		<!-- Main Content Wrapper Start -->
+		<main class="main-content-wrapper">
+			<div class="shop-page-wrapper pt--150 pb--65">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="shop-toolbar mb--50">
+								<div class="row align-items-center">
+									<div style="display: flex">
+										<div class="pagination-filter">
+
+											<a href="{% parse_url request ordering='-rating' %}"
+											   class="sort-block">По рейтингу</a>
+
+											<a href="{% parse_url request ordering='price' %}"
+											   class="sort-block">По возрастанию</a>
+
+											<a href="{% parse_url request ordering='-price' %}"
+											   class="sort-block">По убыванию</a>
+
+											<a href="{% parse_url request ordering='-name' %}"
+											   class="sort-block">По имени А-Я</a>
+
+											<a href="{% parse_url request ordering='name' %}"
+											   class="sort-block">По имени Я-А</a>
+
+										</div>
+
+										<form method="get"
+										      action="/shop">
+											<input type="search"
+											       name="search"
+											       class="custom-input"
+											       placeholder="Поиск товаров..."
+											       value="{{ search }}">
+										</form>
+
+										<div class="col-md-7" style="align-self: center">
+											<p class="product-pages">Показано <strong>{{ page_obj|length }}</strong>
+												товаров
+											</p>
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<div class="shop-products">
+								<div class="row">
+									{% for product in object_list %}
+										{% include 'includes/product.html' %}
+									{% endfor %}
+								</div>
+							</div>
+							<nav class="pagination-wrap">
+								<ul class="pagination">
+									{% if is_paginated %}
+										{% for page in paginator.page_range %}
+											<li><a href="{% parse_url request page=page %}"
+											       class="page-number">{{ page }}</a></li>
+										{% endfor %}
+									{% endif %}
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<!-- Main Content Wrapper Start -->
+{% endblock %}
+

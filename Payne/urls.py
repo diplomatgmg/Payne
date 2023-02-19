@@ -8,6 +8,7 @@ urlpatterns = [
     path('', include('apps.index.urls', 'index')),
 
     path('user/', include('apps.users.urls', 'users')),
+    path('shop/', include('apps.shop.urls', 'shop')),
     ]
 
 if settings.DEBUG:

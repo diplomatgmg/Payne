@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load shop_extras %}
+
+
+{% block content %}
+	<div class="main-content-wrapper">
+		<div class="page-content-inner pt--150 pt-md--60">
+			<div class="container">
+				<div class="row no-gutters mb--80 mb-md--57">
+					<div class="col-lg-7 product-main-image">
+						<div class="product-image">
+							<div class="product-gallery vertical-slide-nav">
+								<div class="product-gallery__large-image mb-sm--30">
+									<div class="item">
+										<figure class="product-gallery__image zoom">
+											{% thumbnail product.image '500x555' crop='center' as im %}
+												<img src="{{ im.url }}"
+												     alt="Product">
+											{% endthumbnail %}
+											{% if product.discount %}
+												<span class="product-badge sale">Скидка {{ product.discount }}%</span>
+											{% endif %}
+											<div class="product-gallery__actions">
+												<button class="action-btn btn-zoom-popup"><i
+														class="fa fa-eye"></i></button>
+												<a href="https://www.youtube.com/results?search_query={{ product.name }}"
+												   class="action-btn"><i class="fa fa-play"></i></a>
+											</div>
+										</figure>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-4 offset-xl-1 col-lg-5 product-main-details mt-md--50 align-self-center" style="font-size: 50px">
+
+						<div class="product-summary pl-lg--30 pl-md--0">
+
+							<h3 class="product-title mb--20">{{ product.name }}
+								<span class="product__rating">
+								<b style="font-size: 15px">{{ product.rating }}</b>
+								<i class="fa fa-star custom-star" style="color: {{ product.rating|get_color_rating }}"></i>
+								</span>
+							</h3>
+
+							<div class="product-price-wrapper mb--25">
+
+								{% include 'includes/product_price.html' %}
+								{% if product.discount %}
+									<br>
+									Скидка {{ product.discount }}%
+								{% endif %}
+							</div>
+							<div class="product-action mb--30">
+								<a href="{% url 'cart_add' product.id %}"
+								   class="btn btn-size-sm btn-shape-square">Добавить в корзину</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row justify-content-center mb--77 mb-md--57">
+					<div class="col-12">
+						<div class="tab-style-1">
+							<div class="nav nav-tabs mb--35 mb-sm--25" id="product-tab" role="tablist">
+								<a class="nav-link active" id="nav-description-tab" data-toggle="tab"
+								   href="#nav-description" role="tab" aria-selected="true">
+									<span>Описание</span>
+								</a>
+								<a class="nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews"
+								   role="tab" aria-selected="true">
+									<span>Reviews(1)</span>
+								</a>
+							</div>
+							<div class="tab-content" id="product-tabContent">
+								<div class="tab-pane fade show active" id="nav-description" role="tabpanel"
+								     aria-labelledby="nav-description-tab">
+									<div class="product-description ">
+										<p>{{ product.description }}</p>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="nav-reviews" role="tabpanel"
+								     aria-labelledby="nav-reviews-tab">
+									<div class="product-reviews">
+										<h3 class="review__title">1 review for Black Blazer</h3>
+										<ul class="review__list">
+											<li class="review__item">
+												<div class="review__container">
+													<img src="../../static/assets/img/others/comment-1.jpg"
+													     alt="Review Avatar"
+													     class="review__avatar">
+													<div class="review__text">
+														<div
+																class="d-flex flex-sm-row flex-column justify-content-between">
+															<div class="review__meta">
+																<strong class="review__author">John Snow </strong>
+																<span class="review__dash">-</span>
+																<span class="review__published-date">November 20,
+                                                                        2018</span>
+															</div>
+															<div class="product-rating">
+																<div class="star-rating star-five">
+                                                                        <span>Rated <strong class="rating">5.00</strong>
+                                                                            out of 5</span>
+																</div>
+															</div>
+														</div>
+														<p class="review__description">Aliquam egestas libero ac
+															turpis pharetra, in vehicula lacus scelerisque.
+															Vestibulum ut sem laoreet, feugiat tellus at, hendrerit
+															arcu.</p>
+													</div>
+												</div>
+											</li>
+										</ul>
+										<div class="review-form-wrapper">
+											<div class="row">
+												<div class="col-lg-8">
+													<span class="reply-title">Add a review</span>
+													<form action="#" class="form pr--30">
+														<div class="form-notes mb--20">
+															<p>Your email address will not be published. Required
+																fields are marked <span class="required">*</span>
+															</p>
+														</div>
+														<div class="form__group mb--10">
+															<label class="form__label d-block mb--10">Your
+																Ratings</label>
+															<div class="rating">
+																<span><i class="fa fa-star"></i></span>
+																<span><i class="fa fa-star"></i></span>
+																<span><i class="fa fa-star"></i></span>
+																<span><i class="fa fa-star"></i></span>
+																<span><i class="fa fa-star"></i></span>
+															</div>
+														</div>
+														<div class="form__group mb--10">
+															<label class="form__label d-block mb--10" for="email">Your
+																Review<span class="required">*</span></label>
+															<textarea name="review" id="review"
+															          class="form__input form__input--textarea"></textarea>
+														</div>
+														<div class="form__group mb--20">
+															<label class="form__label d-block mb--10"
+															       for="name">Name<span
+																	class="required">*</span></label>
+															<input type="text" name="name" id="name"
+															       class="form__input">
+														</div>
+														<div class="form__group mb--20">
+															<label class="form__label d-block mb--10"
+															       for="email">Email<span
+																	class="required">*</span></label>
+															<input type="email" name="email" id="email"
+															       class="form__input">
+														</div>
+														<div class="form__group">
+															<div class="form-row">
+																<div class="col-12">
+																	<input type="submit" value="Submit Now"
+																	       class="btn btn-size-md">
+																</div>
+															</div>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
