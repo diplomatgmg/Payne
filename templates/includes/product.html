@@ -21,7 +21,7 @@
 						<i class="fa fa-heart-o"></i>
 						<span class="sr-only">Add to wishlist</span>
 					</a>
-					<a href="cart.html" class="action-btn">
+					<a href="{% url 'cart:cart_add' product.id %}" class="action-btn">
 						<i class="fa fa-shopping-cart"></i>
 						<span class="sr-only">Add To Cart</span>
 					</a>

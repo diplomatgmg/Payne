@@ -112,7 +112,7 @@ class Product(models.Model):
     def get_price_discount(self):
         return self.real_price - (self.real_price // 100 * self.discount)
 
-    def get_name(self):
+    def get_full_name(self):
         return f'{self.brand} {self.name}'
 
     @classmethod
