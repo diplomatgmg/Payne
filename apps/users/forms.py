@@ -54,6 +54,8 @@ class UserProfileForm(UserChangeForm):
 
 
 class UserChangePasswordForm(PasswordChangeForm):
+    error_messages = {'password_incorrect': 'Пароль введен неправильно.',
+                      'password_mismatch': 'Пароли не совпадают.', }
     old_password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form__input'}))
     new_password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form__input'}))
     new_password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form__input'}))

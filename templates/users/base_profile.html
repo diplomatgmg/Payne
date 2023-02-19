@@ -11,9 +11,9 @@
 							<div class="user-dashboard-tab__head nav flex-md-column" role="tablist"
 							     aria-orientation="vertical">
 								<a class="nav-link" href="{% url 'users:profile' user.id %}">Профиль</a>
-								<a class="nav-link" href="">Изменить пароль</a>
+								<a class="nav-link" href="{% url 'users:change-password' %}">Изменить пароль</a>
 								<a class="nav-link" href="">Заказы</a>
-								<a class="nav-link" href="">Выйти</a>
+								<a class="nav-link" href="{% url 'users:logout' %}">Выйти</a>
 							</div>
 							<div class="user-dashboard-tab__content tab-content">
 								{% block profile %}
