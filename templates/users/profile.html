@@ -4,87 +4,89 @@
 
 
 {% block profile %}
-	<div class="tab-pane fade show active" id="accountdetails">
-		<form action="{% url 'users:profile' user.id %}" method="post" enctype="multipart/form-data">
-			{% csrf_token %}
-			<div class="row mb--20">
-				<div class="col-md-4 mb-sm--20">
-					<label class="form__label" for="{{ form.username.id_for_label }}">Имя пользователя</label>
-					{{ form.username }}
-				</div>
-				<div class="col-md-4 mb-sm--20">
-					<label class="form__label"
-					       for="{{ form.first_name.id_for_label }}">Имя</label>
-					{{ form.first_name }}
-				</div>
-				<div class="col-md-4">
-					<label class="form__label" for="{{ form.last_name.id_for_label }}">Фамилия</label>
-					{{ form.last_name }}
-				</div>
-			</div>
-			<div class="row mb--20">
-				<div class="form__group col-4">
-					<label for="{{ form.phone.id_for_label }}" class="form__label">Номер телефона</label>
-					{{ form.phone }}
-					<div class="help-text">{{ form.phone.help_text }}</div>
-					<div class="form-errors">{{ form.phone.errors }}</div>
-				</div>
-				<div class="col-md-4 mb-sm--20">
-					<label class="form__label" for="{{ form.email.id_for_label }}">Почта</label>
-					{{ form.email }}
-				</div>
-				<div class="col-md-4 mb-sm--20">
-					<label class="form__label" for="{{ form.city.id_for_label }}">Город</label>
-					{{ form.city }}
-				</div>
-			</div>
-			<div class="form-row mb--20">
-				<div class="form__group col-6">
-					<label for="{{ form.street.id_for_label }}" class="form__label">Улица</label>
-					{{ form.street }}
+    <div class="tab-pane fade show active">
+        <form action="{% url 'users:profile' user.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row mb--20">
+                <div class="col-md-4 mb-sm--20">
+                    <label class="form__label" for="{{ form.username.id_for_label }}">Имя пользователя</label>
+                    {{ form.username }}
+                </div>
+                <div class="col-md-4 mb-sm--20">
+                    <label class="form__label"
+                           for="{{ form.first_name.id_for_label }}">Имя</label>
+                    {{ form.first_name }}
+                </div>
+                <div class="col-md-4">
+                    <label class="form__label" for="{{ form.last_name.id_for_label }}">Фамилия</label>
+                    {{ form.last_name }}
+                </div>
+            </div>
+            <div class="row mb--20">
+                <div class="form__group col-4">
+                    <label for="{{ form.phone.id_for_label }}" class="form__label">Номер телефона</label>
+                    {{ form.phone }}
+                    <div class="help-text">{{ form.phone.help_text }}</div>
+                    <div class="form-errors">{{ form.phone.errors }}</div>
+                </div>
+                <div class="col-md-4 mb-sm--20">
+                    <label class="form__label" for="{{ form.email.id_for_label }}">Почта</label>
+                    {{ form.email }}
+                    <div class="help-text">{{ form.email.help_text }}</div>
+                    <div class="form-errors">{{ form.email.errors }}</div>
+                </div>
+                <div class="col-md-4 mb-sm--20">
+                    <label class="form__label" for="{{ form.city.id_for_label }}">Город</label>
+                    {{ form.city }}
+                </div>
+            </div>
+            <div class="form-row mb--20">
+                <div class="form__group col-6">
+                    <label for="{{ form.street.id_for_label }}" class="form__label">Улица</label>
+                    {{ form.street }}
 
-				</div>
-				<div class="form__group col-2">
-					<label for="{{ form.house.id_for_label }}" class="form__label">Дом</label>
-					{{ form.house }}
+                </div>
+                <div class="form__group col-2">
+                    <label for="{{ form.house.id_for_label }}" class="form__label">Дом</label>
+                    {{ form.house }}
 
-				</div>
-				<div class="form__group col-2">
-					<label for="{{ form.building.id_for_label }}" class="form__label">Корпус</label>
-					{{ form.building }}
+                </div>
+                <div class="form__group col-2">
+                    <label for="{{ form.building.id_for_label }}" class="form__label">Корпус</label>
+                    {{ form.building }}
 
-				</div>
+                </div>
 
-				<div class="form__group col-2">
-					<label for="{{ form.apartment.id_for_label }}" class="form__label">Квартира</label>
-					{{ form.apartment }}
-				</div>
+                <div class="form__group col-2">
+                    <label for="{{ form.apartment.id_for_label }}" class="form__label">Квартира</label>
+                    {{ form.apartment }}
+                </div>
 
-				<div class="form__group col-12 pt--20">
-					<label for="{{ form.about_me.id_for_label }}" class="form__label">О себе</label>
-					{{ form.about_me }}
+                <div class="form__group col-12 pt--20">
+                    <label for="{{ form.about_me.id_for_label }}" class="form__label">О себе</label>
+                    {{ form.about_me }}
 
-				</div>
-				<div class="form__group col-12 pt--20 pb--38" style="top: 10px">
-					<label for="{{ form.image.id_for_label }}" class="form__label">Изображение профиля </label><br>
-					{{ form.image }}
+                </div>
+                <div class="form__group col-12 pt--20 pb--38" style="top: 10px">
 
-				</div>
-				{% thumbnail user.image "100x100" crop="center" as im %}
-					<br>
-					<br>
-					<br>
-					<img src="{{ im.url }}">
-				{% endthumbnail %}
+                    <label for="{{ form.image.id_for_label }}" class="form__label">Изображение профиля </label><br>
+                    {{ form.image }}
 
 
-			</div>
-			<div class="row">
-				<div class="col-12">
-					<input type="submit" value="Сохранить" class="btn">
-				</div>
-			</div>
-		</form>
-	</div>
+                </div>
+
+
+                {% thumbnail user.image "100x100" crop="center" as im %}
+                    <img src="{{ im.url }}">
+                {% endthumbnail %}
+
+
+                <div class="ml--20 align-self-center">
+                    <input type="submit" value="Сохранить" class="btn">
+                </div>
+
+            </div>
+        </form>
+    </div>
 {% endblock %}
 
