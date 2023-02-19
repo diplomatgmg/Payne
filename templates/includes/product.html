@@ -17,7 +17,7 @@
 						<i class="fa fa-balance-scale"></i>
 						<span class="sr-only">Add To Compare</span>
 					</a>
-					<a href="wishlist.html" class="action-btn">
+					<a href="{% url 'wishlist:wishlist_add' product.id %}" class="action-btn">
 						<i class="fa fa-heart-o"></i>
 						<span class="sr-only">Add to wishlist</span>
 					</a>
