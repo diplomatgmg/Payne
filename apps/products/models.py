@@ -2,6 +2,7 @@ import random
 
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.db.models import Q
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
@@ -110,6 +111,15 @@ class Product(models.Model):
 
     def get_price_discount(self):
         return self.real_price - (self.real_price // 100 * self.discount)
+
+    def get_name(self):
+        return f'{self.brand} {self.name}'
+
+    @classmethod
+    def search_products(cls, ordering, query):
+        ordered_products = cls.objects.order_by(ordering)
+        filtered_products = [obj for obj in ordered_products if query in str(obj).lower()]
+        return filtered_products
 
     def __str__(self):
         return f'{self.brand} {self.name}'

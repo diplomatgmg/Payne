@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.views.generic import CreateView, DetailView
 from django.views.generic import ListView
 
@@ -28,10 +29,8 @@ class ShopView(TitleMixin, ListView):
         return context
 
     def get_queryset(self):
-        search = ' '.join(self.request.GET.get('search', '').lower().split())
-        object_list = self.model.objects.order_by(self.ordering)
-        if search:
-            object_list = [obj for obj in object_list if search in str(obj).lower()]
+        query = ' '.join(self.request.GET.get('search', '').lower().split())
+        object_list = self.model.search_products(query=query, ordering=self.ordering)
         return object_list
 
 
