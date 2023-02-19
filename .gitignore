@@ -1,6 +1,7 @@
 .idea/
 cache/
 venv/
+user_images/
 
 *initial.py
 db.sqlite3
