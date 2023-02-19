@@ -12,3 +12,4 @@ def wishlist_add(request, product_id):
     cart = Wishlist(request)
     cart.add(product_id)
     return redirect(request.META.get('HTTP_REFERER', '/'))
+
