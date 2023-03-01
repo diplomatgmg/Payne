@@ -5,3 +5,4 @@ user_images/
 
 *initial.py
 db.sqlite3
+.coverage
