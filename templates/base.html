@@ -100,12 +100,12 @@
                                 </a>
                             </div>
                             <div class="toolbar-item">
-                                <a href="{% url 'wishlist:wishlist' %}" class="toolbar-btn">
+                                <a href="" class="toolbar-btn">
 									<span class="mini-cart-btn__icon">
 										<i class="flaticon-heart"></i>
 									</span>
                                     <sup class="mini-cart-btn__count">
-                                        {{ user_wishlist|length }}
+{#                                        {{ user_wishlist|length }}#}
                                     </sup>
                                 </a>
                             </div>
@@ -115,7 +115,7 @@
 										<i class="flaticon-bag"></i>
 									</span>
                                     <sup class="mini-cart-btn__count">
-                                        {{ user_cart|length }}
+{#                                        {{ user_cart|length }}#}
                                     </sup>
                                 </a>
                             </div>
@@ -209,7 +209,7 @@
                 <h3 class="mini-cart__heading">Shopping Cart</h3>
                 <div class="mini-cart__content">
                     <ul class="mini-cart__list pt--38 pb--38 border-bottom border-top border-left">
-                        {% for cart in user_cart %}
+                        {% for cart in suser_cart %}
                             <li class="mini-cart__product">
                                 <a href="#" class="mini-cart__product-remove">
                                     <i class="flaticon-cross"></i>
@@ -239,11 +239,11 @@
                     <div class="mini-cart__total">
                         <span>Подытог</span>
                         <span>
-                            <strong class="ammount">{{ user_cart.total_price|intcomma }}</strong> ₽
+{#                            <strong class="ammount">{{ user_cart.total_price|intcomma }}</strong> ₽#}
                             </span>
                     </div>
                     <div class="mini-cart__buttons">
-                        <a href="{% url 'cart:cart' %}" class="btn btn-fullwidth btn-bg-primary mb--20">
+                        <a href="" class="btn btn-fullwidth btn-bg-primary mb--20">
                             Перейти в корзину
                         </a>
                         <a href="checkout.html" class="btn btn-fullwidth btn-bg-primary">Оформить заказ</a>

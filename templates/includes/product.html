@@ -17,11 +17,11 @@
 						<i class="fa fa-balance-scale"></i>
 						<span class="sr-only">Add To Compare</span>
 					</a>
-					<a href="{% url 'wishlist:wishlist_add' product.id %}" class="action-btn">
+					<a href="" class="action-btn">
 						<i class="fa fa-heart-o"></i>
 						<span class="sr-only">Add to wishlist</span>
 					</a>
-					<a href="{% url 'cart:cart_add' product.id %}" class="action-btn">
+					<a href="" class="action-btn">
 						<i class="fa fa-shopping-cart"></i>
 						<span class="sr-only">Add To Cart</span>
 					</a>
@@ -30,7 +30,7 @@
 			<div class="product__info">
 				<div class="product__info--left">
 					<h3 class="product__title">
-						<a href="product-details.html">{{ product.brand }} {{ product.name }}</a>
+						<a href="">{{ product.brand }} {{ product.name }}</a>
 					</h3>
 					<div class="product__price">
 						{% if product.discount %}
