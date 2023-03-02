@@ -2,8 +2,8 @@
 cache/
 venv/
 user_images/
+__pycache__/
 
 *initial.py
 db.sqlite3
 .coverage
-media/cache*
